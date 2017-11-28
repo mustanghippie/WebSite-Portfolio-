@@ -1,0 +1,62 @@
+@charset "UTF-8";
+@import "_fonts.scss";
+@import "_initialize.scss";
+@import "_header.scss";
+@import "_footer.scss";
+
+fieldset{
+    border: none;
+}
+
+#contact_us_ar{
+	background-image: url('../images/general/ps_neutral.png');
+	text-align: center;
+	padding: 1em 0;
+	position: relative;
+	h1{
+		margin: 0;
+	}
+}
+
+#contact_us_tbl{
+	margin: 0 auto;
+	input{
+		width: 20em;
+		margin-bottom: 1em;
+	}
+	textarea{
+		@extend input;
+		height: 10em;
+	}
+	.send_btn{
+		background-color: #FFFFFF;
+    	padding: 0.5em;
+    	@include transition(1s);
+    	&:hover{
+    		background-color: #000000;
+    		color: #FFFFFF;
+    	}
+	}
+	@include sm-screen($tablet-size){
+		input{
+			width: 40em;
+		}
+		.send_btn{
+			width: 20em;
+		}
+	}
+}
+
+#cover_anime_contact{
+    @include sm-screen($mobile-size){
+        @include cover_anime(1);
+        @include animation(disappear 1s ease both);
+        @include animation-play-state(running);
+        @include transform-origin(0,100%);
+    }
+}
+
+@include keyframes(disappear){
+	0%  { @include transform(rotateX(0deg)); }
+	100%{ @include transform(rotateX(90deg)); } 
+}

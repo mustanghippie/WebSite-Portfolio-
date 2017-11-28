@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+#id_inf_ar{
+    @include sm-screen($tablet-size){
+    	@include display-flex;
+        @include justify-content(center);
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        p{
+        	font-size: 2em;
+        }
+    }
+}
+
+#a_gmap{
+    width: 100%;
+    height: 350px;
+    position: relative;
+    z-index: 10;
+    @include sm-screen($tablet-size){
+        width: 60%
+    }
+}
+
+#copy_right{
+    border-top:1px solid rgba(255,255,255,.1);
+    text-align:center;
+    background-color:#A9A9A9;
+    font-size:0.8em;
+    padding:0.6em;
+}
+
+#address_ar{
+    text-align: center;
+    p{
+        font-size: 1.2em;
+    }
+    @include sm-screen($tablet-size){
+        width: 40%;
+    }
+
+}
+
+.fa{
+	margin: 0.2em 0.2em 0em 0.2em;
+    cursor: pointer;
+}
+
+.fa-facebook-official:hover{
+    color: #3B5998; // facebook color
+    @include transition(1s);
+}
+
+.fa-envelope:hover{
+    color: #D54B3D;
+    @include transition(1s);
+}
+
+.fa-twitter-square:hover{
+    color: #55acee; // twitter color
+    @include transition(1s);
+}
+
+.fa-arrow-circle-up{
+    color: $menu-color;
+    margin:0;
+    
+}

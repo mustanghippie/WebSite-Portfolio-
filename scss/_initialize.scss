@@ -1,0 +1,232 @@
+@charset "UTF-8";
+@import "compass";
+
+// Define mixin and variables(screen size,color,etc)
+
+// Screen size
+$mobile-size:767px;
+$tablet-size:768px;
+$middle-pc-size:992px;
+$large-pc-size:1200px;
+
+// color
+$menu-color:#0DCEA8;
+
+
+// mixin　for mobile size
+@mixin xs-screen($break-point){
+    @media screen and (max-width: $break-point){
+        @content;
+    }
+}
+
+// mixin for tablet size
+@mixin sm-screen($break-point) {
+    @media screen and (min-width: $break-point){
+        @content;
+    }
+}
+
+// mixin for middle size PC
+@mixin md-screen($break-point) {
+    @media screen and (min-width: $break-point){
+        @content;
+    }
+}
+
+// mixin for large size PC
+@mixin lg-screen($break-point) {
+    @media screen and (min-width: $break-point){
+        @content;
+    }
+}
+
+@mixin background-brightness(){
+	// overlay black layer
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: ' ';
+}
+
+// covering animation
+@mixin cover_anime($transition_time){
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    @include transition(#{$transition_time}s);
+}
+
+
+// ==========================================================================
+// Parallax
+// changed a top image by mobile screen or not 
+// ==========================================================================
+@mixin cd-fixed-bg(){
+    height: 100vh;
+    @include background-size(cover);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    //background-position: center center;
+}
+
+@mixin cd-bg-1($page){
+    @include xs-screen($mobile-size){
+        @if $page == 'top' {
+            background-image: url("../images/home/home_top_sp.jpg");
+        } @else if $page == 'service' {
+            background-image: url("../images/service_images/our_service_top.jpg");
+        } @else if $page == 'aboutus' {
+            background-image: url("../images/about_us_images/about_us_top.jpg");
+        }
+    }
+    
+    @include sm-screen($tablet-size){
+        @if $page == 'top' {
+            background-image: url("../images/home/home_top.jpg");
+        } @else if $page == 'service' {
+            background-image: url("../images/service_images/our_service_top.jpg");
+        } @else if $page == 'aboutus' {
+            background-image: url("../images/about_us_images/about_us_top.jpg");
+        }
+    }
+    
+    position: relative;
+    &::before{
+        // overlay black layer
+        background-color: rgba(0,0,0,0.1);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        content: ' ';
+    }
+} 
+
+@mixin svg_title_anime{
+    position: relative;
+    svg{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 0 auto;
+        @include xs-screen($mobile-size){
+            margin-top: 3em;
+            width: 95%;
+        }
+
+        @include sm-screen($tablet-size){
+            width: 768px;
+        }
+
+        @include md-screen($middle-pc-size){
+            width: 980px;
+        }
+    }
+}
+
+//
+// Prallax
+// --------------------------------------------------------------------------
+
+html,body{
+    font-family:'Slabo 27px', serif,Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" ,
+                       "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" ,
+                       "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
+                       font-size: 15px;
+}
+// ,dl,dt,dd
+p,dd{
+    margin: 0;
+    padding: 0;
+}
+
+dt{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 0.2em;
+}
+
+h1{
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+}
+
+// ==========================================================================
+// Go to top
+// ==========================================================================
+#page_top_scroll{
+    position: fixed;
+    z-index: 99;
+    right: 0em;
+    bottom: -1em;
+    @include opacity(0);
+    @include transition-duration(1s);
+    pointer-events: none;
+    @include sm-screen($tablet-size){
+        right: 1em;
+        bottom: 1em;
+    }
+    &:hover{
+        @include animation(rumble 0.12s linear infinite);
+    }
+}
+
+@include keyframes (rumble){
+  0% {@include transform(rotate(0.5deg) translate(0,0));}
+  12.5% {@include transform(rotate(0.4deg) translate(1px,1px));}
+  25% {@include transform(rotate(0.8deg) translate(0px,1px));}
+  37.5% {@include transform(rotate(0.4deg) translate(-1px,0));}
+  50% {@include transform(rotate(0deg) translate(0,0));}
+  62.5% {@include transform(rotate(-0.4deg)  translate(1px,0));}
+  75% {@include transform(rotate(-0.8deg)  translate(0,1px));}
+  87.5% {@include transform(rotate(-0.4deg)  translate(-1px,-1px));}
+  100%  {@include transform(rotate(0deg) translate(0,0));}
+}
+//
+// Go to top
+// --------------------------------------------------------------------------
+
+// ==========================================================================
+// SVG top animation
+// ==========================================================================
+.path{
+    fill:rgba(255,255,255,0);
+    stroke:#FFFFFF;
+    stroke-width:1;
+    stroke-dasharray: 3000;
+    stroke-dashoffset:3000;
+    @include animation(DASH 3s ease-in alternate forwards);
+    //@include animation(DASH 3s ease-in 0s forwards);
+}
+  
+@include keyframes (DASH){
+    0%{stroke-dashoffset:3000;}
+    80% {stroke-dashoffset:2000;fill:rgba(255,255,255,0.2);}
+    100%{stroke-dashoffset:0;fill:rgba(255,255,255,1);}
+}
+//
+// SVG top animation
+// --------------------------------------------------------------------------
+
+// 仕切り
+.sec_h_block{
+    text-align: center;
+    &:before{
+        content: "";
+        display: block;
+        width: 3em;
+        height: 0;
+        margin: 0 auto 0.5em;
+        border-top: 3px solid $menu-color;
+    }
+}

@@ -1,0 +1,301 @@
+@charset "UTF-8";
+@import "_fonts.scss";
+@import "_initialize.scss";
+@import "_header.scss";
+@import "_footer.scss";
+
+// ==========================================================================
+// top_service_visual
+// ==========================================================================
+
+// Prallax using mixin@_initialize.scss
+.cd-fixed-bg {
+    @include cd-fixed-bg;
+}
+
+.cd-bg-1 {
+    @include cd-bg-1('service'); 
+}
+
+// title text
+#t-ar-title{
+    @include svg_title_anime;
+}
+
+//
+// top_service_visual
+// --------------------------------------------------------------------------
+
+// ==========================================================================
+// our_service_message
+// ==========================================================================
+
+#service_top_image{
+    width: 100%;
+    height: 40em;
+}
+
+#o_s_message{
+    background-image: url('../images/general/ps_neutral.png');
+    text-align: center;
+    padding: 1em 0;
+    height: 21em;
+    h1{
+        margin:0 auto;
+    }
+    p{
+        font-size: 1.2em;
+        position: relative;
+    }
+    @include xs-screen($mobile-size){
+        height: 33em;
+    }
+}
+
+// text animation
+.f_c_group_1{
+    @include sm-screen($tablet-size){
+        position: absolute;
+        left: 0;
+        right: 0;
+        //top: 1em;
+        top: 6em;
+        bottom: 0;
+        margin: auto;
+        height: 0px;
+        @include transition(.5s);
+        @include opacity(0);
+        @include transition-timing-function(ease-out);
+    }
+    
+}
+
+.f_c_group_2{
+    @extend .f_c_group_1;
+    @include sm-screen($tablet-size){
+        //top:11em;
+        top: 16em;
+        @include transition-delay(.3s); 
+    }
+    
+}
+
+.f_c_group_3{
+    @extend .f_c_group_1;
+    @include sm-screen($tablet-size){
+        //top: 18em;
+        top: 23em;
+        @include transition-delay(.6s); 
+    }
+    
+}
+
+//
+// our_service_message
+// --------------------------------------------------------------------------
+
+// ==========================================================================
+// our_service_motto
+// ==========================================================================
+
+#our_service_motto{
+    position: relative;
+}
+
+
+
+#o_s_mot_box{
+    @include sm-screen($tablet-size){
+        @include display-flex;
+        @include justify-content(center);
+        @include align-items(center);
+    }
+    
+}
+
+#cover_anime_service_motto{
+    @include sm-screen($mobile-size){
+        @include cover_anime(1);
+        @include transition-timing-function(ease-in-out);
+        //@include transition-delay(.3s);
+        z-index: 2;
+    }
+}
+
+#mot_text{
+    @include transition(1s);
+    @include opacity(1s);
+    @include xs-screen($mobile-size){
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        z-index: 10;
+        color: #FFFFFF;
+        height: 200px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    @include sm-screen($tablet-size){
+        width: 50%;
+        //text-align: center;
+        margin-top: 3em;
+        margin-left: 9%;
+        //h1{font-size: 2.5em;}
+        //p{font-size: 1.3em;}
+    }
+
+    @include lg-screen($large-pc-size){
+        width: 40%;
+        h1{font-size: 2.5em;}
+        p{font-size: 1.3em;}
+    }
+}
+
+#service_mot_image{
+
+     @include xs-screen($mobile-size){
+        width: 100%;
+        @include filter(brightness(0.5));
+        //@include background-brightness;
+    }
+
+    @include sm-screen($tablet-size){
+        width: 50%;
+        text-align: center;
+    }
+
+    @include lg-screen($large-pc-size){
+        width: 60%;
+    }
+}
+
+#cover_anime_work_pic{
+    @include sm-screen($mobile-size){
+        @include cover_anime(1);
+        @include transition-timing-function(ease-out);
+    }
+}
+
+// ==========================================================================
+// service_costs
+// ==========================================================================
+
+#our_service_costs{
+    text-align: center;
+    margin-bottom: 2em;
+    p{
+        margin-bottom: 1em;
+        font-size: 1.2em;
+    }
+}
+
+#service_list_box_top{
+    @include display-flex;
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+    
+    @include sm-screen($tablet-size){
+        figure{
+            width: 22em;
+            position: relative;
+            @include opacity(0);
+            @include animation(bounceIn 600ms ease both);
+            @include animation-play-state(paused);
+        }
+        figure:first-child{
+            margin: 0 .7em 0 0;
+        }
+
+        figure:nth-child(2){
+            margin: 0 0 0 .7em;
+            @include animation-delay(.1s);
+        }
+
+        figure:nth-child(3){
+            margin: 0 .7em 0 0;
+            @include animation-delay(.2s);
+        }
+
+        figure:last-child{
+            margin: 0 0 0 .7em;
+            @include animation-delay(.3s);
+        }
+        
+    }
+
+    @include md-screen($middle-pc-size) {
+        figure{
+            width: 28em;
+        }
+        figure:first-child{
+            margin: 0 .7em 0 0;
+        }
+
+        figure:nth-child(2){
+            margin: 0 0 0 .7em;
+        }
+
+        figure:nth-child(3){
+            margin: 0 .7em 0 0;
+        }
+
+        figure:last-child{
+            margin: 0 0 0 .7em;
+        }
+    }
+
+    @include lg-screen($large-pc-size) {
+        figure{
+            width: 18.5em;
+        }
+
+        figure:nth-child(1){
+            margin: 0 .7em 0 0;
+        }
+
+        figure:nth-child(2){
+            margin: 0 .7em 0 .7em;
+            
+        }
+
+        figure:nth-child(3){
+            margin: 0 .7em 0 .7em;
+            
+        }
+
+        figure:nth-child(4){
+            margin: 0 0 0 .7em;
+            
+        }
+        
+    }
+}
+
+#service_list_box_bottom{
+    @extend #service_list_box_top;
+    @include sm-screen($tablet-size){
+        $delay_time: .4;
+        @for $i from 1 through 4 {
+            figure:nth-child(#{$i}){
+                @include animation-delay(#{$delay_time}s);
+            }
+            $delay_time: $delay_time + .1;
+        }
+    }
+}
+
+.resize_service_img{
+    width: 100%;
+}
+
+@include keyframes(bounceIn){
+    0% { @include opacity(0); transform: scale(.3); }
+    50% { @include transform(scale(1.05)); }
+    70% { @include transform(scale(.9)); }
+    100% { @include opacity(1); @include transform(scale(1)); }
+}
+
+//
+// service_costs
+// --------------------------------------------------------------------------

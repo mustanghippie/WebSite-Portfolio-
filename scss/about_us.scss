@@ -1,0 +1,141 @@
+@charset "UTF-8";
+@import "_fonts.scss";
+@import "_initialize.scss";
+@import "_header.scss";
+@import "_footer.scss";
+
+// ==========================================================================
+// top_about_us_visual
+// ==========================================================================
+
+// Prallax using mixin@_initialize.scss
+.cd-fixed-bg {
+    @include cd-fixed-bg;
+}
+
+.cd-bg-1 {
+    @include cd-bg-1('aboutus'); 
+}
+
+// title text
+#t-ar-title{
+	@include svg_title_anime;
+}
+
+//
+// top_about_us_visual
+// --------------------------------------------------------------------------
+
+// ==========================================================================
+// about_us_body
+// ==========================================================================
+#a_u_message{
+	background-image: url('../images/general/ps_neutral.png');
+	text-align: center;
+	padding: 1em 0;
+	height: 16em;
+	h1{
+		margin: 0 auto;
+	}
+	p{
+		font-size: 1.2em;
+		position: relative;
+	}
+}
+
+#a_u_main{
+	text-align: center;
+	img{
+		width: 100%;
+	}
+}
+// text animation
+.f_c_group_1{
+	@include sm-screen($tablet-size){
+		position: absolute;
+		left: 0;
+		right: 0;
+		//top: 1em;
+		top: 6em;
+		bottom: 0;
+		margin: auto;
+		height: 0px;
+		@include transition(.5s);
+		@include opacity(0);
+		@include transition-timing-function(ease-out);
+	}
+	
+}
+
+.f_c_group_2{
+	@extend .f_c_group_1;
+	@include sm-screen($tablet-size){
+		top:11em;
+		//top: 16em;
+		@include transition-delay(.3s); 
+	}
+	
+}
+
+.f_c_group_3{
+	@extend .f_c_group_1;
+	@include sm-screen($tablet-size){
+		//top: 18em;
+		top: 23em;
+		@include transition-delay(.6s); 
+	}
+	
+}
+
+#profile_ar_box{
+	@include sm-screen($tablet-size){
+        @include display-flex;
+        @include justify-content(center);
+        @include align-items(center);
+
+        figure:first-child{
+    	margin-left: 5%;
+	    }
+	    figure:last-child{
+	    	margin-right: 5%;
+	    }
+    }
+
+}
+
+.pro_img_fig{
+	margin-bottom: 2em;
+	position: relative;
+}
+
+#about_our_service{
+	@extend #a_u_message;
+	background-image: url('../images/general/ps_neutral.png');
+}
+
+//
+// about_us_body
+// --------------------------------------------------------------------------
+
+.hase_q_pic_ar{
+	position: relative;
+}
+
+.reset_vartical_align{
+	vertical-align: baseline;
+}
+
+#cover_anime_hase{
+	@include sm-screen($mobile-size){
+        @include cover_anime(1);
+        @include transition-timing-function(ease-out);
+    }
+}
+
+#cover_anime_joseph{
+	@include sm-screen($mobile-size){
+        @include cover_anime(1);
+        @include transition-delay(.2s);
+        @include transition-timing-function(ease-out);
+    }
+}
