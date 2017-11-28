@@ -1,7 +1,7 @@
 # WebSite-Portfolio-
-This is an exmple of website I made.
-・HTML+SASS+JS
-・Responsive Design
+This is an exmple of website I made.  
+・HTML+SASS+JS  
+・Responsive Design  
 
 # Hase Auto Repair
 
